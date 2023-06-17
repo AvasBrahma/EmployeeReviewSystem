@@ -1,3 +1,3 @@
 module.exports.home= async function(req, res){
-    return res.render('admin/home');
+    return res.render('login');
 }

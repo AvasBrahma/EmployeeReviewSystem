@@ -3,6 +3,9 @@ const app=express();
 const port=8000;
 const bodyParser = require('body-parser');
 const expressLayouts=require('express-ejs-layouts');
+const db=require('./config/mongoose');
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
