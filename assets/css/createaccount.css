@@ -1,0 +1,12 @@
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px 3px;
+  font-size: 14px;
+}
+.container article{
+    width: 150%
+}

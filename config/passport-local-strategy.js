@@ -1,3 +1,4 @@
+const passport = require('passport');
 const LocalStrategy=require('passport-local').Strategy;
 const Admin=require('../models/admin');
 
@@ -41,4 +42,33 @@ passport.serializeUser(function(admin, done){
      });
  });
  
+// check if the user is authenticated
+
+passport.checkAuthentication=function(req, res, next){
+    // if the user is signed in then pass on the request to the next function(controller's action)
+
+
+    if(req.isAuthenticated()){
+       return next();
+
+    }
+   //if the user is not signed in
+   return res.redirect('/login');
+}
+
+passport.setAuthenticatedUser= function(req, res, next){
+
+if(req.isAuthenticated()){
+   //req user contains the current signed in user from the session cookie and we are just
+   //sending this to the local for the viewa
+
+   res.locals.user=req.user;
+
+
+}
+next();
+}
+
+
+
  module.exports=passport;
