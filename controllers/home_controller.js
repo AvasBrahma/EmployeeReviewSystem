@@ -62,3 +62,14 @@ module.exports.createSession=function(req, res){
      });
  
   }
+
+  module.exports.signOut=function(req, res){
+    //before redirecting we need to destroy the session
+    req.logout(function(err){
+        if(err){
+            return next(err);
+        }
+    });
+    return res.redirect('/');
+
+}
