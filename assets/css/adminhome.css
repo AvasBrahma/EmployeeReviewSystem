@@ -1,0 +1,43 @@
+
+.empBox{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px;
+
+}
+
+.empBox .box{
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.08);
+}
+
+.empBox .box .emp-numbers{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: var(--blue);
+}
+.empBox .box .box-name{
+
+    font-size: 2.5rem;
+    color: var(--black2);
+    margin-top: 5px;
+}
+
+.empBox .box .iconbox{
+   font-size: 3.5rem;
+   color: var(--black2);
+}
+
+.empBox .box:hover{
+    background: var(--blue);
+}

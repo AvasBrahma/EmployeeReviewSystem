@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="css/adminhome.css">
+
+<h1>Admin-Home</h1>
+<% if (locals.user) { %>
+    <h1>Hii <%= locals.user.name %></h1>
+  <% } %>
+
+
+  <div class="empBox">
+    <div class="box">
+       <div>
+            <div class="emp-numbers">10</div>
+            <div class="box-name">Total Employees</div>
+       </div>
+        <div class="iconbox"><i class="fa-solid fa-users"></i></div>
+    </div>
+
+  </div>

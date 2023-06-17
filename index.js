@@ -1,15 +1,13 @@
 // Import required libraries
 const express=require('express');
+const cookieParser = require('cookie-parser');
+const passport=require('passport');
 const bodyParser = require('body-parser');
 const expressLayouts=require('express-ejs-layouts');
 const session=require('express-session');
-const passport=require('passport');
-
-
+const passportLocal=require('./config/passport-local-strategy');
 // Import custom modules or routes
 const db=require('./config/mongoose');
-const passportLocal=require('./config/passport-local-strategy');
-
 // Create an Express app
 const app=express();
 
@@ -20,7 +18,16 @@ app.use(bodyParser.json());
 
 
 app.use(express.static('./assets'));
+app.use(expressLayouts);
+app.use(cookieParser());
 
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
+
+
+app.set('view engine', 'ejs');
+app.set('layout', './layouts/main');
 
 
 // Passport middleware setup 
@@ -38,18 +45,15 @@ app.use(session({
      
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
-app.use(expressLayouts);
-app.set('layout extractStyles', true);
-app.set('layout extractScripts', true);
 
-app.set('view engine', 'ejs');
-app.set('layout', './layouts/main');
 
 app.use('/',require('./routes'));
-app.use(passport.setAuthenticatedUser);
+
 
 // Start the server
 const port=8000;
