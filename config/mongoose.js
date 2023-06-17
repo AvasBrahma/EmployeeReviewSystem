@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/EmployeeReviewSystemDB');
 const db=mongoose.connection; 
 
 //if there is an error this will print error
-db.on('error', console.error.bind(consolse, 'error connecting to db'));
+db.on('error', console.error.bind(console, 'error connecting to db'));
 
 //if it is up and running print the message
 db.once('open', function(){
