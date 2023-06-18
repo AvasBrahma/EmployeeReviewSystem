@@ -1,6 +1,8 @@
 const Admin=require('../models/admin');
 const User=require('../models/user');
 const Employee=require('../models/employee');
+
+
 module.exports.createAccount=async function(req, res){
     return res.render('create-account');
 }
