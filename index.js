@@ -13,13 +13,15 @@ const app=express();
 
 
 // Middleware setup
+app.use(express.static('./assets'));
+app.use(expressLayouts);
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.use(express.static('./assets'));
-app.use(expressLayouts);
-app.use(cookieParser());
+
 
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);

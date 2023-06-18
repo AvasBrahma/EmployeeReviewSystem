@@ -9,5 +9,4 @@ const empController=require('../controllers/employee_controller');
 
 router.get('/', empController.empHome);
 
-
 module.exports=router;

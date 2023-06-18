@@ -8,7 +8,11 @@ module.exports.createAccount=async function(req, res){
 module.exports.home= async function(req, res){
 
     if(req.isAuthenticated()){
-        return res.redirect('/');
+        if(req.user.role=='admin'){
+            return res.render('admin/adminhome');
+        }else{
+            return res.render('admin/emphome');
+        }
      }
      return res.render('login',{
          title: "Sign In"
