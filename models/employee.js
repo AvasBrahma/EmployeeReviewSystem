@@ -1,5 +1,5 @@
 const mongoose= require("mongoose");
-const adminschema=new mongoose.Schema({
+const employeeschema=new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -19,12 +19,12 @@ const adminschema=new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['admin'],
+        enum: ['employee'],
         required: true,
       }
 },{
     timestamps:true
 });
 
-const Admin=mongoose.model('Admin', adminschema);
-module.exports=Admin;
+const Employee=mongoose.model('Employee', employeeschema);
+module.exports=Employee;

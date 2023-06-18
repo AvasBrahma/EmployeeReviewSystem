@@ -1,11 +1,23 @@
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+:root{
+    --blue: #2a6496;
+    --white: #fff;
+    --lightblack: #272727;
+    --black2: #0f0f0f;
+}
 .empBox{
     position: relative;
     width: 100%;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 25px;
+    grid-gap: 30px;
+    
 
 }
 

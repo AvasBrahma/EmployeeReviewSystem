@@ -9,9 +9,11 @@
     <%- style %>
 </head>
 <body>
-    <% if (locals.user) { %>
+    <% if (locals.user.role=='admin') { %>
         <%- include('../admin/_header'); %>
-      <% } %>
+      <% } else {%>
+        <%- include('../employee/_header'); %>
+        <% }%>
     <%- body %>
     
 

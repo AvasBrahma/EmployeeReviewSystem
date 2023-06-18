@@ -23,6 +23,7 @@ router.get('/sign-in', homeController.signIn);
 router.get('/', homeController.home);
 
 router.use('/admin',require('./admin'));
+router.use('/employee',require('./employee'));
 router.get('/sign-out', homeController.signOut);
 
 module.exports=router;
