@@ -9,7 +9,7 @@ const empController=require('../controllers/employee_controller');
 
 router.get('/', empController.empHome);
 
-router.get('/viewreviews', empController.viewPerformanceReviews);
+router.get('/viewreviews/:id', empController.viewPerformanceReviews);
 
 
 

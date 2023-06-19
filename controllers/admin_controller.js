@@ -1,6 +1,7 @@
 const Admin=require('../models/admin');
 const User=require('../models/user');
 const Employee=require('../models/employee');
+const PerformanceReview=require('../models/performancereviews');
 
 module.exports.adminHome=function(req, res){
     if(req.isAuthenticated()){
@@ -105,4 +106,41 @@ module.exports.addAccount=async function(req, res){
     } catch (error) {
          console.log('Error:', error);
     }
+}
+
+
+
+module.exports.addReview=async function(req, res){
+
+    const user= await User.findOne({_id: req.params.id});
+    console.log('Review Body : ', req.body);
+    console.log('Reviewer details : ', user);
+            const review={
+                empname: req.body.employeeName,
+                reviewdate:req.body.reviewDate,
+                performancecriteria:req.body.performanceCriteria,
+                feedback:req.body.feedback,
+                rating:req.body.rating,
+                employee:req.body.employeeId,
+                reviewer:req.params.id,
+                reviewername:user.name
+              }
+              try {
+
+                
+                const newReview= new PerformanceReview(review);
+                await PerformanceReview.create(newReview);
+                const employee= await Employee.findOne({_id: req.body.employeeId});
+                res.render('admin/viewemployee', {
+                    employee,
+                    title: 'Employee Profile'
+                   
+                });
+                
+              } catch (error) {
+                console.log('Error:', error);
+              }
+                
+
+   
 }

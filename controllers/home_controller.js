@@ -13,7 +13,7 @@ module.exports.home= async function(req, res){
         if(req.user.role=='admin'){
             return res.render('admin/adminhome');
         }else{
-            return res.render('admin/emphome');
+            return res.render('employee/emphome');
         }
      }
      return res.render('login',{
