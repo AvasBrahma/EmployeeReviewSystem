@@ -12,5 +12,5 @@ router.post('/create-account', adminController.addAccount);
 
 router.get('/', adminController.adminHome);
 router.get('/viewallemployees', adminController.viewAllEmployees);
-router.get('/viewemployee', adminController.viewEmployee);
+router.get('/viewemployee/:id', adminController.viewEmployee);
 module.exports=router;

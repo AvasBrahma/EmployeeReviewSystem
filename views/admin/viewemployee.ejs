@@ -17,7 +17,7 @@
         				<div class="col-md-3">
         					<div class="user-info-left">
         						<img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Picture">
-        						<h2>Jonathan Smith <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
+        						<h2><%= employee.name %> <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
         						<div class="contact">
         							<a href="#" class="btn btn-block btn-danger"><i class="fa fa-envelope-o"></i> Send Message</a>
         							<a href="#" onclick="openReviewPopup()" class="btn btn-block btn-success"><i class="fa fa-book"></i> Add Performance</a>
@@ -30,7 +30,7 @@
         							<h3><i class="fa fa-square"></i> Basic Information</h3>
         							<p class="data-row">
         								<span class="data-name">Username</span>
-        								<span class="data-value">jonasmith</span>
+        								<span class="data-value"><%= employee.name %></span>
         							</p>
         							<p class="data-row">
         								<span class="data-name">Birth Date</span>
@@ -53,11 +53,11 @@
         							<h3><i class="fa fa-square"></i> Contact Information</h3>
         							<p class="data-row">
         								<span class="data-name">Email</span>
-        								<span class="data-value">me@jonasmith.com</span>
+        								<span class="data-value"><%= employee.email %></span>
         							</p>
         							<p class="data-row">
         								<span class="data-name">Phone</span>
-        								<span class="data-value">(1800) 221 - 876543</span>
+        								<span class="data-value"><%= employee.phonenumber %></span>
         							</p>
         							<p class="data-row">
         								<span class="data-name">Address</span>

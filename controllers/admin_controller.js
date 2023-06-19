@@ -46,8 +46,21 @@ module.exports.viewAllEmployees=async function(req, res){
     
 }
 
-module.exports.viewEmployee=function(req, res){
-    return res.render('admin/viewemployee');
+module.exports.viewEmployee=async function(req, res){
+    try {
+        const employee= await Employee.findOne({_id: req.params.id});
+  
+  
+        res.render('admin/viewemployee', {
+            employee,
+            title: 'Employee Profile'
+           
+        });
+        
+     } catch (error) {
+          console.log('Error', error);
+     }
+  
 }
 
 
