@@ -74,6 +74,8 @@
         			</div>
         		</div>
         		<!-- END PROFILE TAB CONTENT -->
+
+
           	<!-- ACTIVITY TAB CONTENT -->
 		<div class="container bootstrap snippets bootdey tab-pane activity" id="activity-tab">
 			<div class="row">
@@ -99,8 +101,7 @@
 										<tr>
 											<td>
 												<img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-												<a href="#"><%= element.reviewername%></a>
-												<span class="user-subhead">Member</span>
+												<span><%= element.reviewername%></span>
 											</td>
 											<td>
 												<span class="text-info"><%= element.feedback %></span>
@@ -127,7 +128,7 @@
 														<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 													</span>
 												</a>
-												<a href="#" class="table-link danger">
+												<a href="#" class="table-link danger" onclick="openPopup()">
 													<span class="fa-stack">
 														<i class="fa fa-square fa-stack-2x"></i>
 														<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -269,7 +270,6 @@
                 <div class="form-group">
                     <label for="employeeName">Employee Name:</label>
                     <input type="text" id="employeeName" name="employeeName" value="<%= employee.name %>" class="form-control" disabled required>
-					<input type="hidden" id="employeeName" name="employeeName" value="<%= employee.name %>" class="form-control" required>
 					<input type="hidden" id="employeeId" name="employeeId"  value="<%= employee._id %>" class="form-control" required>
                 </div>
 
@@ -304,5 +304,40 @@
         </div>
     </div>
 </div>
+
+
+<!-- Delete Warning Modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/projects/edit?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Yes, Delete Project</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="popup" class="popup" style="display: none;">
+	<div class="popup-content">
+	  <p>Are you sure you want to delete?</p>
+	  <div class="popup-buttons">
+		<button onclick="closePopup()">Cancel</button>
+		<button onclick="deleteItem()">Delete</button>
+	  </div>
+	</div>
+  </div>
 
 <script src="/js/admin.js"></script>

@@ -4,9 +4,18 @@ const Employee=require('../models/employee');
 const PerformanceReview=require('../models/performancereviews');
 const { formatCreatedAt } = require('../assets/helper/controllerhelper');
 
-module.exports.adminHome=function(req, res){
+module.exports.adminHome=async function(req, res){
     if(req.isAuthenticated()){
-    return res.render('admin/adminhome');
+        const employees = await Employee.find().exec();
+        const performanceReviews = await PerformanceReview.find().exec();
+        const totalEmployee=await Employee.count();
+        const totalreviews=await PerformanceReview.count();
+
+    return res.render('admin/adminhome',{
+        title: "Home",
+        totalEmployee,
+        totalreviews
+    });
     }
     return res.render('login',{
         title: "Sign In"
@@ -33,7 +42,7 @@ module.exports.viewAllEmployees=async function(req, res){
           return res.render('admin/viewallemployees', {
              employee,
              current: page,
-             title: "home",
+             title: "Employees",
              pages: Math.ceil(totalEmployee/perPage),
              totalEmployee  
         
@@ -47,6 +56,42 @@ module.exports.viewAllEmployees=async function(req, res){
 
     
 }
+
+module.exports.viewAllReviews=async function(req, res){
+
+
+    let perPage=12;
+    // if we don't get nunber the default value will be 1
+
+    let page=req.query.page||1;
+    try {
+         //To get the records sorted by at Updated
+        const reviews=await PerformanceReview.aggregate([{ $sort: { updatedAt: -1 }}])
+          .skip(perPage * page - perPage)
+          .limit(perPage)
+          .exec();
+
+          const totalreviews=await PerformanceReview.count();
+          
+           console.log("Total Employees", totalreviews);
+          return res.render('admin/viewallreviews', {
+             reviews,
+             current: page,
+             formatCreatedAt,
+             title: "Reviews",
+             pages: Math.ceil(totalreviews/perPage),
+        
+        });
+       
+    } catch (error) {
+
+        console.log('Error:', error);
+        
+    }
+
+    
+}
+
 
 module.exports.viewEmployee=async function(req, res){
     try {

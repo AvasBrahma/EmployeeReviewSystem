@@ -6,9 +6,19 @@ function closeReviewPopup() {
     document.getElementById("overlay").style.display = "none";
 }
 
-document.getElementById("addNewButton").addEventListener("click", function() {
-    var myModal = new bootstrap.Modal(document.getElementById('createUserModal'));
-    myModal.show();
-});
 
+function openPopup() {
+    document.getElementById('popup').style.display = 'flex';
+  }
 
+  // Close the popup
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  // Handle delete action
+  function deleteItem() {
+    // Perform delete action here
+    console.log('Item deleted');
+    closePopup(); // Close the popup after deletion
+  }

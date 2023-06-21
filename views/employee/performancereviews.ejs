@@ -114,5 +114,26 @@
     </div>
 </div>
 
+<!-- Delete Warning Modal -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+           <div class="model-header">
+              <div class="modal-body">
+                <p>
+                  Are you sure? you want to<b class="fw-bold">delete<br/></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/projects/edit/<%= projects._id %>?_method=DELETE" method="POST" class="position-relative">
+                  <button type="submit" class="btn btn-primary">Yes, Delete Project</button>
+                </form>
+              </div>
+       </div>
+
+    </div>
+  </div>
+
 <script src="/js/employee.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
