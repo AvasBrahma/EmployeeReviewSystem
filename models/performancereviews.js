@@ -20,10 +20,13 @@ const performanceSchema=new mongoose.Schema({
         type: Number,
         required: true
      },
-     employeeaction:{
+      feedbackstatus:{
       type: String,
       enum: ['pending', 'submitted'],
       default: 'pending'
+  },
+  employeefeedback:{
+    type: String
   },
         employee:{
             type:mongoose.Schema.Types.ObjectId,

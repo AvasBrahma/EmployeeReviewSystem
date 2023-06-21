@@ -2,6 +2,7 @@
 const express=require('express');
 const cookieParser = require('cookie-parser');
 const passport=require('passport');
+const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const expressLayouts=require('express-ejs-layouts');
 const session=require('express-session');
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+app.use(methodOverride('_method'));
 
 
 app.set('layout extractStyles', true);

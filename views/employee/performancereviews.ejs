@@ -55,13 +55,18 @@
                                   </div>
                               </td> 
                               <td>
-                                  <span class="label label-primary"><%= element.employeeaction %></span>
+                                  <span class="label label-primary"><%= element.feedbackstatus %></span>
                               </td>
                               <td>
+                              <% if (element.feedbackstatus === 'Submitted') { %>
                                 <a href="project_details.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#feedbackModal" onclick="openReviewPopup('<%= JSON.stringify(element) %>')" disabled><i class="fa fa-pencil"></i> Submit Feedback</a>
+                            <% } else { %>
+                                <a href="project_details.html" class="btn btn-primary btn-xs" disabled><i class="fa fa-folder"></i> View </a>
                                 <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#feedbackModal" onclick="openReviewPopup('<%= JSON.stringify(element) %>')"><i class="fa fa-pencil"></i> Submit Feedback</a>
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                              </td>
+                            <% } %>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                           </td>
                           </tr>
                           <% }) %>
                           </tbody>
@@ -76,10 +81,11 @@
         <div class="popup">
             <button class="close-btn" onclick="closeReviewPopup()">&times;</button>
             <h2>Performance Review</h2>
-            <form action="/admin/create-review/>" method="POST">
+            <form action="/employee/submitfeedback?_method=PUT" method="POST">
                 <div class="form-group">
                     <label for="employeeName">Reviewer Name:</label>
                     <input type="text" id="employeeName" name="employeeName" class="form-control" disabled required>
+                    <input type="hidden" id="employeeid" name="employeeid" class="form-control" >
                 </div>
 
                 <div class="form-group">
@@ -102,6 +108,7 @@
 
                 <div class="form-group">
                     <button type="submit">Submit Feedback</button>
+                </div>
             </form>
         </div>
     </div>

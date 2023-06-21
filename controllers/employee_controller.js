@@ -43,3 +43,18 @@ module.exports.viewPerformanceReviews=async function(req, res){
   
 
 }
+
+module.exports.submitEmployeeFeedback= async function(req, res){
+          
+   console.log("Submit Employee Feedback :", req.body);
+   console.log("Submit Employee Feedback :", req.user.id);
+
+   await PerformanceReview.findOneAndUpdate({employee: req.body.employeeid}, {
+    employeefeedback: req.body.employeefeedback,
+    feedbackstatus: "Submitted",
+    updatedAt: Date.now()
+ });
+
+    res.redirect(`/employee/viewreviews/${req.user.id}`);
+
+}

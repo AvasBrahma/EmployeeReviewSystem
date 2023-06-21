@@ -16,7 +16,7 @@ function openReviewPopup(elementData) {
   document.getElementById('performanceCriteria').value = element.performancecriteria;
   document.getElementById('feedback').value = element.feedback;
   document.getElementById('rating').value = element.rating;
-  
+  document.getElementById('employeeid').value = element.employee;
   // Open the modal
   document.getElementById('overlay').style.display = 'block';
 }
