@@ -2,6 +2,7 @@ const Admin=require('../models/admin');
 const User=require('../models/user');
 const Employee=require('../models/employee');
 const PerformanceReview=require('../models/performancereviews');
+const { formatCreatedAt } = require('../assets/helper/controllerhelper');
 
 module.exports.adminHome=function(req, res){
     if(req.isAuthenticated()){
@@ -50,10 +51,17 @@ module.exports.viewAllEmployees=async function(req, res){
 module.exports.viewEmployee=async function(req, res){
     try {
         const employee= await Employee.findOne({_id: req.params.id});
-  
+        let perPage=12;
+        let page=req.query.page||1;
+        const performanceReviews = await PerformanceReview.find({ employee: req.params.id}).sort({ updatedAt: -1 })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
+        .exec();
   
         res.render('admin/viewemployee', {
             employee,
+            performanceReviews,
+            formatCreatedAt,
             title: 'Employee Profile'
            
         });
@@ -142,4 +150,21 @@ module.exports.addReview=async function(req, res){
               }
                 
    
+}
+
+
+module.exports.viewEmployeePerformance=async function(req, res){
+    try {
+       
+  
+        res.render('admin/viewperformance', {
+
+            title: 'Employee Performance'
+           
+        });
+        
+     } catch (error) {
+          console.log('Error', error);
+     }
+  
 }

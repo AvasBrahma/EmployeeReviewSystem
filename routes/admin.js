@@ -13,6 +13,7 @@ router.post('/create-account', adminController.addAccount);
 router.get('/', adminController.adminHome);
 router.get('/viewallemployees', adminController.viewAllEmployees);
 router.get('/viewemployee/:id', adminController.viewEmployee);
+router.get('/employee/viewperformance', adminController.viewEmployeePerformance);
 
 router.post('/create-review/:id', adminController.addReview);
 

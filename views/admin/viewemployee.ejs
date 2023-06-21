@@ -74,19 +74,78 @@
         			</div>
         		</div>
         		<!-- END PROFILE TAB CONTENT -->
-        
-        		<!-- ACTIVITY TAB CONTENT -->
-        		<div class="tab-pane activity" id="activity-tab">
-        			<ul class="list-unstyled activity-list">
-        				<li>
-        					<i class="fa fa-shopping-cart activity-icon pull-left"></i>
-        					<p>
-        						<a href="#">Jonathan</a> commented on <a href="#">Special Deal 2013</a> <span class="timestamp">12 minutes ago</span>
-        					</p>
-        			</ul>
-        			<p class="text-center more"><a href="#" class="btn btn-custom-primary">View more <i class="fa fa-long-arrow-right"></i></a></p>
-        		</div>
-        		<!-- END ACTIVITY TAB CONTENT -->
+          	<!-- ACTIVITY TAB CONTENT -->
+		<div class="container bootstrap snippets bootdey tab-pane activity" id="activity-tab">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="main-box no-header clearfix">
+						<div class="main-box-body clearfix">
+							<div class="table-responsive">
+								<table class="table user-list">
+									<thead>
+										<tr>
+										<th class="text-center"><span>Reviewer</span></th>
+										<th class="text-center"><span>Reviewer Comment</span></th>
+										<th class="text-center"><span>Review Created</span></th>
+										<th class="text-center"><span>Performance Criteria</span></th>
+										<th class="text-center"><span>Rating</span></th>
+										<th class="text-center"><span>Employee Feedback Status</span></th>
+                                        <th><span>Feedback Comment</span></th>
+										<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<% performanceReviews.forEach(element => { %>
+										<tr>
+											<td>
+												<img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+												<a href="#"><%= element.reviewername%></a>
+												<span class="user-subhead">Member</span>
+											</td>
+											<td>
+												<span class="text-info"><%= element.feedback %></span>
+											  </td>
+											<td><%= formatCreatedAt(element.createdAt) %></td>
+											<td>
+												<span class="label label-info"><%= element.performancecriteria %></span>
+											  </td>
+											<td><a><%= element.rating %> Star</a></td>
+											<td class="text-center">
+												<% if (element.feedbackstatus === 'Submitted') { %>
+                                                    <span class="label label-success"><%= element.feedbackstatus %></span>
+													<% } else { %>
+                                                        <span class="label label-danger"><%= element.feedbackstatus %></span>
+												<% } %>
+											</td>
+											<td>
+												<span class="text-info"><%= element.employeefeedback %></span>
+											  </td>
+											<td style="width: 20%;">
+												<a href="#" class="table-link text-info">
+													<span class="fa-stack">
+														<i class="fa fa-square fa-stack-2x"></i>
+														<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+													</span>
+												</a>
+												<a href="#" class="table-link danger">
+													<span class="fa-stack">
+														<i class="fa fa-square fa-stack-2x"></i>
+														<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+													</span>
+												</a>
+											</td>
+										</tr>
+										<% }) %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+    <!-- END ACTIVITY TAB CONTEN -->
         
         		<!-- SETTINGS TAB CONTENT -->
         		<div class="tab-pane settings" id="settings-tab">
