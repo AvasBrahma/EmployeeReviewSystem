@@ -21,6 +21,8 @@
                           <thead>
                           <tr>
                               <th>Reviewer Name</th>
+                              <th>Performance Criteria</th>
+                              <th>Reviewer Feedback</th>
                               <th>Overall Rating</th>
                               <th>Feedback Status</th>
                               <th>Custom</th>
@@ -35,24 +37,30 @@
                                   <small>Created <%= formatCreatedAt(element.createdAt) %></small>
                               </td>
                               <td>
+                                <span class="label label-info"><%= element.performancecriteria %></span>
+                              </td>
+                              <td>
+                                <span class="text-info"><%= element.feedback %></span>
+                              </td>
+                              <td>
                                 <div class="col-xs-20 col-sm-7 emphasis">
                                     <p class="ratings">
-                                        <a><%= element.rating %></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star-o"></span></a>
+                                      <a><%= element.rating %></a>
+                                      <a href="#"><span class="fa fa-star <% if (element.rating >= 1) { %>filled<% } %>"></span></a>
+                                      <a href="#"><span class="fa fa-star <% if (element.rating >= 2) { %>filled<% } %>"></span></a>
+                                      <a href="#"><span class="fa fa-star <% if (element.rating >= 3) { %>filled<% } %>"></span></a>
+                                      <a href="#"><span class="fa fa-star <% if (element.rating >= 4) { %>filled<% } %>"></span></a>
+                                      <a href="#"><span class="fa fa-star <% if (element.rating >= 5) { %>filled<% } else { %>unfilled<% } %>"></span></a>
                                     </p>
-                                </div>
+                                  </div>
+                              </td> 
+                              <td>
+                                  <span class="label label-primary"><%= element.employeeaction %></span>
                               </td>
                               <td>
-                                  <span class="label label-primary">Submitted</span>
-                              </td>
-                              <td>
-                                  <a href="project_details.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                                  <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                <a href="project_details.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#feedbackModal" onclick="openReviewPopup('<%= JSON.stringify(element) %>')"><i class="fa fa-pencil"></i> Submit Feedback</a>
+                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                               </td>
                           </tr>
                           <% }) %>
@@ -60,3 +68,44 @@
                       </table>
                   </section>
     </div>
+
+<!-- Feedback Modal -->
+
+<div class="overlay" id="overlay">
+    <div class="overlay-content">
+        <div class="popup">
+            <button class="close-btn" onclick="closeReviewPopup()">&times;</button>
+            <h2>Performance Review</h2>
+            <form action="/admin/create-review/>" method="POST">
+                <div class="form-group">
+                    <label for="employeeName">Reviewer Name:</label>
+                    <input type="text" id="employeeName" name="employeeName" class="form-control" disabled required>
+                </div>
+
+                <div class="form-group">
+                    <label for="performanceCriteria">Performance Criteria:</label>
+                    <input type="text" id="performanceCriteria" name="performanceCriteria" class="form-control" disabled required>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" value="Good one" class="form-control"  disabled required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating:</label>
+                    <input type="number" id="rating" name="rating" value="5" class="form-control" min="1" max="5" disabled required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">Employee Feedback:</label>
+                    <textarea id="employeefeedback" name="employeefeedback" value="Good one" class="form-control"  required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/employee.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
