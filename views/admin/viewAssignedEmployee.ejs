@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/viewemployee.css">
+<link rel="stylesheet" href="/css/viewAssignedEmployee.css">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="main-content">
+            <!-- NAV TABS -->
+        	<ul class="nav nav-tabs nav-tabs-custom-colored tabs-iconized">
+        		<li class="active"><a href="#profile-tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-user"></i> Profile</a></li>
+        		<li class=""><a href="#activity-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-rss"></i> Performance</a></li>
+        		<li class=""><a href="#settings-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-gear"></i> Settings</a></li>
+        	</ul>
+
+
+          <div class="selectEmpTable">
+            <input type="text" id="searchInput" placeholder="Search user">
+            <br><br>
+          
+            <form id="userForm">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <tr>
+                    <td><input type="checkbox" name="user[]" value="1"></td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="user[]" value="2"></td>
+                    <td>Jane Smith</td>
+                    <td>janesmith@example.com</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="user[]" value="3"></td>
+                    <td>Michael Johnson</td>
+                    <td>michaeljohnson@example.com</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+              <button type="submit" class="submit-button">Submit</button>
+            </form>
+
+
+          </div>
+      
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/admin.js"></script>

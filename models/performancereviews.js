@@ -39,7 +39,16 @@ const performanceSchema=new mongoose.Schema({
         reviewername:{
          type: String,
          required: true
-        }
+        },
+        assignorid:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'Admin'
+        },
+        assignorname:{
+         type: String,
+         required: true
+        },
+
        
     },{
         timestamps:true

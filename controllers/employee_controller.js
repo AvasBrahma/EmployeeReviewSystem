@@ -58,3 +58,21 @@ module.exports.submitEmployeeFeedback= async function(req, res){
     res.redirect(`/employee/viewreviews/${req.user.id}`);
 
 }
+
+
+module.exports.viewReviewRequest=async function(req, res){
+
+
+       try {
+           console.log("view review request controller")
+           return res.render('employee/reviewrequest', {
+              title: "Review Request"
+           });
+
+
+    } catch (error) {
+      console.log('Error:', error);
+    }
+
+
+}

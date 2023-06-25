@@ -198,11 +198,11 @@ module.exports.addReview=async function(req, res){
 }
 
 
-module.exports.viewEmployeePerformance=async function(req, res){
+module.exports.viewAssignedEmployee=async function(req, res){
     try {
        
   
-        res.render('admin/viewperformance', {
+        res.render('admin/viewAssignedEmployee', {
 
             title: 'Employee Performance'
            

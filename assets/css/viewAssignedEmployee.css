@@ -1,0 +1,68 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
+
+.selectEmpTable {
+  margin: 50px auto; /* Adjust the margin as needed */
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.selectEmpTable input[type="text"],
+.selectEmpTable button {
+  margin-bottom: 10px;
+}
+
+.selectEmpTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.selectEmpTable th,
+.selectEmpTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.selectEmpTable th {
+  background-color: #f2f2f2;
+}
+
+.selectEmpTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.selectEmpTable .submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.selectEmpTable .submit-button:hover {
+  background-color: #45a049;
+}

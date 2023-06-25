@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="/css/listperformancereviews.css">
+
+<div class="container">
+    <section class="panel">
+                      <header class="panel-heading">
+                          Employee Review Requests
+                          <span class="pull-right">
+                              <button type="button" id="loading-btn" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Refresh</button>
+                          </span>
+                      </header>
+                      <div class="panel-body">
+                          <div class="row">
+    
+                              <div class="col-md-12">
+                                  <div class="input-group"><input type="text" placeholder="Search Here" class="input-sm form-control"> <span class="input-group-btn">
+                                  <button type="button" class="btn btn-sm btn-success"> Go!</button> </span></div>
+                              </div>
+                          </div>
+                      </div>
+                      <table class="table table-hover p-table">
+                          <thead>
+                          <tr>
+                              <th>Assigned By</th>
+                              <th>Employee Name</th>
+                              <th>Action</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td class="p-name">
+                                <a href="project_details.html">Avas</a>
+                                <br>
+                                <small></small>
+                            </td>
+                              <td class="p-name">
+                                  <a href="project_details.html">Raj</a>
+                                  <br>
+                                  <small></small>
+                              </td>
+                             
+                              <td>
+                                <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#feedbackModal" onclick="openCreateReviewPopup()" ><i class="fa fa-pencil"></i>Review Now</a>
+                                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                              </td>
+                          </tr>
+
+                          </tbody>
+                      </table>
+                  </section>
+    </div>
+
+<!-- Feedback Modal -->
+
+<div class="overlay" id="overlay">
+    <div class="overlay-content">
+        <div class="popup">
+            <button class="close-btn" onclick="closeReviewPopup()">&times;</button>
+            <h2>Performance Review</h2>
+            <form action="/employee/submitfeedback?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="employeeName">Employee Name:</label>
+                    <input type="text" id="employeeName" name="employeeName" class="form-control" disabled required>
+                    <input type="hidden" id="employeeid" name="employeeid" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="performanceCriteria">Performance Criteria:</label>
+                    <input type="text" id="performanceCriteria" name="performanceCriteria" class="form-control" disabled required>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" class="form-control"  disabled required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating:</label>
+                    <input type="number" id="rating" name="rating" class="form-control" min="1" max="5" disabled required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/employee.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

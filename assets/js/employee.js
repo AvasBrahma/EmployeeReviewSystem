@@ -20,3 +20,12 @@ function openReviewPopup(elementData) {
   // Open the modal
   document.getElementById('overlay').style.display = 'block';
 }
+
+
+function openCreateReviewPopup() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function closeCreateReviewPopup() {
+  document.getElementById("overlay").style.display = "none";
+}
