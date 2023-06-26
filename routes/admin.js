@@ -18,6 +18,6 @@ router.get('/viewAssignedReview/:id', adminController.viewAssignedEmployee);
 
 router.post('/create-review/:id', adminController.addReview);
 
-router.post('/assigned-review', adminController.assignedReview);
+router.post('/assigned-review/:id', adminController.assignedReview);
 
 module.exports=router;

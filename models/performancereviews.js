@@ -5,36 +5,33 @@ const performanceSchema=new mongoose.Schema({
         required: true
        },
      reviewdate:{
-        type: Date,
-        required: true
+        type: Date
      },
      performancecriteria:{
-        type: String,
-        required: true
+        type: String
      },
      feedback:{
         type: String,
-        required: true
      },
      rating:{
         type: Number,
-        required: true
      },
       feedbackstatus:{
       type: String,
-      enum: ['pending', 'submitted'],
-      default: 'pending'
+      enum: ['AssignedToReviewer','Pending', 'Submitted'],
+      default: 'AssignedToReviewer'
   },
   employeefeedback:{
     type: String
   },
-        employee:{
+        employeeid:{
             type:mongoose.Schema.Types.ObjectId,
-            ref: 'Project'
+            ref: 'Employee'
         },
-        reviewer:{
+        reviewerid:{
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Admin'
+            
         },
         reviewername:{
          type: String,

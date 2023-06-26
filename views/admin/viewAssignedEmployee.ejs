@@ -10,12 +10,12 @@
         		<li class=""><a href="#settings-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-gear"></i> Settings</a></li>
         	</ul>
 
-
+          <h1>Assigned Performance reviewed for employee : <%= excludedEmployee.name %></h1>
           <div class="selectEmpTable">
             <input type="text" id="searchInput" placeholder="Search user">
             <br><br>
           
-            <form action="/admin/assigned-review" method="POST" id="userForm">
+            <form action="/admin/assigned-review/<%= locals.user.id %>" method="POST" id="userForm">
               <table>
                 <thead>
                   <tr>
@@ -27,8 +27,14 @@
                 <tbody id="tableBody">
                   <% employee.forEach(element => { %>
                   <tr>
-                    <td><input type="checkbox" name="reviewerid" value="<%= element.id %>"></td>
-                    <td><%= element.name %></td>
+                    <td>
+                      <input type="checkbox" name="reviewerid" value="<%= element.id %>">
+                      <input type="hidden" name="employeeid" value="<%= excludedEmployee.id %>">
+                      <input type="hidden" name="employeename" value="<%= excludedEmployee.name %>">
+                    </td>
+                    <td><%= element.name %>
+                      <input type="hidden" name="reviewername" value="<%= element.name %>">
+                    </td>
                     <td><%= element.email %></td>
                   </tr>
                   <% }) %>

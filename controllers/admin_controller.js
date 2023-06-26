@@ -98,7 +98,7 @@ module.exports.viewEmployee=async function(req, res){
         const employee= await Employee.findOne({_id: req.params.id});
         let perPage=12;
         let page=req.query.page||1;
-        const performanceReviews = await PerformanceReview.find({ employee: req.params.id}).sort({ updatedAt: -1 })
+        const performanceReviews = await PerformanceReview.find({ employeeid: req.params.id}).sort({ updatedAt: -1 })
         .skip(perPage * page - perPage)
         .limit(perPage)
         .exec();
@@ -169,26 +169,24 @@ module.exports.addReview=async function(req, res){
     console.log('Review Body : ', req.body);
     console.log('Reviewer details : ', user);
             const review={
-                empname: req.body.employeeName,
+                empname: req.body.empname,
                 reviewdate:req.body.reviewDate,
                 performancecriteria:req.body.performanceCriteria,
                 feedback:req.body.feedback,
                 rating:req.body.rating,
-                employee:req.body.employeeId,
-                reviewer:req.params.id,
-                reviewername:user.name
+                employeeid:req.body.employeeId,
+                reviewerid:req.params.id,
+                reviewername:user.name,
+                assignorid:req.params.id,
+                assignorname:user.name,
+                feedbackstatus: "Pending"
               }
               try {
 
                 
                 const newReview= new PerformanceReview(review);
                 await PerformanceReview.create(newReview);
-                const employee= await Employee.findOne({_id: req.body.employeeId});
-                res.render('admin/viewemployee', {
-                    employee,
-                    title: 'Employee Profile'
-                   
-                });
+                res.redirect(`admin/viewemployee/${req.body.employeeId}`);
                 
               } catch (error) {
                 console.log('Error:', error);
@@ -201,15 +199,18 @@ module.exports.addReview=async function(req, res){
 module.exports.viewAssignedEmployee=async function(req, res){
         try {           
              const excludedId = req.params.id;
-            
+             
              console.log("excluded ID :", excludedId);
- 
+             const excludedEmployee = await Employee.findById(excludedId).exec();
+        
+
              const employee = await Employee.find({ _id: { $ne: excludedId } })
                .sort({ updatedAt: -1 })
                .exec();
             
               return res.render('admin/viewAssignedEmployee', {
                  employee,
+                 excludedEmployee,
                  title: "Employees",
 
             });
@@ -225,22 +226,23 @@ module.exports.viewAssignedEmployee=async function(req, res){
 module.exports.assignedReview=async function(req, res){
 
    try{
-    console.log('Review Body : ', req.body);
-    
-    // console.log('Reviewer details : ', user);
-    //         const review={
-    //             empname: req.body.employeeName,
-    //             reviewdate:req.body.reviewDate,
-    //             performancecriteria:req.body.performanceCriteria,
-    //             feedback:req.body.feedback,
-    //             rating:req.body.rating,
-    //             employee:req.body.employeeId,
-    //             reviewer:req.params.id,
-    //             reviewername:user.name
-    //           }
-    //           try {
+    const assignorId = req.params.id;
+    const user= await User.findOne({_id: assignorId});
+    const assignorname =user.name
+    console.log(' assignorId: ', assignorId);
+    console.log(' Reviewer Id : ', req.body);
+    const assignedreview={
+        empname: req.body.employeename,
+        employeeid:req.body.employeeid,
+        reviewerid:req.body.reviewerid,
+        reviewername:req.body.reviewername,
+        assignorid:assignorId,
+        assignorname:assignorname
 
-                
+      }
+        
+        const newReviewAssigned= new PerformanceReview(assignedreview);
+        await PerformanceReview.create(newReviewAssigned); 
              res.redirect('/admin/viewallemployees');
           
                 

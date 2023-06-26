@@ -12,6 +12,7 @@
 										<th class="text-center"><span>Reviewer</span></th>
 										<th class="text-center"><span>Reviewer Comment</span></th>
 										<th class="text-center"><span>Review Created</span></th>
+										<th class="text-center"><span>Employee Name</span></th>
 										<th class="text-center"><span>Performance Criteria</span></th>
 										<th class="text-center"><span>Rating</span></th>
 										<th class="text-center"><span>Employee Feedback Status</span></th>
@@ -29,7 +30,15 @@
 											<td>
 												<span class="text-info"><%= element.feedback %></span>
 											  </td>
-											<td><%= formatCreatedAt(element.createdAt) %></td>
+											<td>
+												<% if (element.feedbackstatus === 'AssignedToReviewer') { %>
+												Review Not Created</td>
+												<% } else { %>
+													<%= formatCreatedAt(element.reviewdate)%></td>
+												<% } %>	
+												<td>
+													<span><%= element.empname %></span>
+												  </td>
 											<td>
 												<span class="label label-info"><%= element.performancecriteria %></span>
 											  </td>
@@ -37,9 +46,11 @@
 											<td class="text-center">
 												<% if (element.feedbackstatus === 'Submitted') { %>
                                                     <span class="label label-success"><%= element.feedbackstatus %></span>
-													<% } else { %>
+													<% } else if(element.feedbackstatus === 'Pending'){ %>
                                                         <span class="label label-danger"><%= element.feedbackstatus %></span>
-												<% } %>
+												<% } else {%>
+													<span class="label label-warning"><%= element.feedbackstatus %></span>
+													<% }%>
 											</td>
 											<td>
 												<span class="text-info"><%= element.employeefeedback %></span>
