@@ -11,15 +11,15 @@ const form = document.getElementById('userForm');
     const searchInput = document.getElementById('searchInput');
     const tableBody = document.getElementById('tableBody');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const selectedUsers = Array.from(form.elements['user[]'])
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
+    // form.addEventListener('submit', function(event) {
+    //   event.preventDefault();
+    //   const selectedUsers = Array.from(form.elements['user[]'])
+    //     .filter(checkbox => checkbox.checked)
+    //     .map(checkbox => checkbox.value);
 
-      // Do something with the selected user values
-      console.log(selectedUsers);
-    });
+    //   // Do something with the selected user values
+    //   console.log(selectedUsers);
+    // });
 
     searchInput.addEventListener('input', function() {
       const query = searchInput.value.toLowerCase();

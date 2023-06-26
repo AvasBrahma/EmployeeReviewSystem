@@ -15,7 +15,7 @@
             <input type="text" id="searchInput" placeholder="Search user">
             <br><br>
           
-            <form id="userForm">
+            <form action="/admin/assigned-review" method="POST" id="userForm">
               <table>
                 <thead>
                   <tr>
@@ -25,22 +25,13 @@
                   </tr>
                 </thead>
                 <tbody id="tableBody">
+                  <% employee.forEach(element => { %>
                   <tr>
-                    <td><input type="checkbox" name="user[]" value="1"></td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
+                    <td><input type="checkbox" name="reviewerid" value="<%= element.id %>"></td>
+                    <td><%= element.name %></td>
+                    <td><%= element.email %></td>
                   </tr>
-                  <tr>
-                    <td><input type="checkbox" name="user[]" value="2"></td>
-                    <td>Jane Smith</td>
-                    <td>janesmith@example.com</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox" name="user[]" value="3"></td>
-                    <td>Michael Johnson</td>
-                    <td>michaeljohnson@example.com</td>
-                  </tr>
-                  <!-- Add more rows as needed -->
+                  <% }) %>
                 </tbody>
               </table>
               <button type="submit" class="submit-button">Submit</button>

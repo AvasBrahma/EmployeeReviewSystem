@@ -199,17 +199,55 @@ module.exports.addReview=async function(req, res){
 
 
 module.exports.viewAssignedEmployee=async function(req, res){
-    try {
-       
-  
-        res.render('admin/viewAssignedEmployee', {
+        try {           
+             const excludedId = req.params.id;
+            
+             console.log("excluded ID :", excludedId);
+ 
+             const employee = await Employee.find({ _id: { $ne: excludedId } })
+               .sort({ updatedAt: -1 })
+               .exec();
+            
+              return res.render('admin/viewAssignedEmployee', {
+                 employee,
+                 title: "Employees",
 
-            title: 'Employee Performance'
-           
-        });
+            });
         
      } catch (error) {
           console.log('Error', error);
      }
   
 }
+
+
+
+module.exports.assignedReview=async function(req, res){
+
+   try{
+    console.log('Review Body : ', req.body);
+    
+    // console.log('Reviewer details : ', user);
+    //         const review={
+    //             empname: req.body.employeeName,
+    //             reviewdate:req.body.reviewDate,
+    //             performancecriteria:req.body.performanceCriteria,
+    //             feedback:req.body.feedback,
+    //             rating:req.body.rating,
+    //             employee:req.body.employeeId,
+    //             reviewer:req.params.id,
+    //             reviewername:user.name
+    //           }
+    //           try {
+
+                
+             res.redirect('/admin/viewallemployees');
+          
+                
+              } catch (error) {
+                console.log('Error:', error);
+              }
+                
+   
+}
+

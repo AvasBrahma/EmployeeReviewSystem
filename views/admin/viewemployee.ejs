@@ -19,7 +19,7 @@
         						<img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Picture">
         						<h2><%= employee.name %> <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
         						<div class="contact">
-        							<a href="/admin/viewAssignedReview" class="btn btn-block btn-danger"><i class="fa fa-envelope-o"></i> Assiged Employee To Reviewed</a>
+        							<a href="/admin/viewAssignedReview/<%= employee.id %>" class="btn btn-block btn-danger"><i class="fa fa-envelope-o"></i> Assiged Employee To Reviewed</a>
         							<a href="#" onclick="openReviewPopup()" class="btn btn-block btn-success"><i class="fa fa-book"></i> Add Performance</a>
         						</div>
         					</div>
