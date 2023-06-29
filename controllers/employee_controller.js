@@ -59,9 +59,11 @@ module.exports.viewPerformanceReviews=async function(req, res){
 module.exports.submitEmployeeFeedback= async function(req, res){
           
    console.log("Submit Employee Feedback :", req.body);
-   console.log("Submit Employee Feedback :", req.user.id);
+   console.log("Submit Employee Feedback :", req.body.feedbackid);
 
-   await PerformanceReview.findOneAndUpdate({employeeid: req.body.employeeid,
+   await PerformanceReview.findOneAndUpdate({
+    _id: req.body.feedbackid,
+    employeeid: req.body.employeeid,
     feedbackstatus: "Pending",
     reviewerid: req.body.reviewerid
   }, {

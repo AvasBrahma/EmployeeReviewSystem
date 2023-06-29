@@ -18,6 +18,7 @@ function openReviewPopup(elementData) {
   document.getElementById('rating').value = element.rating;
   document.getElementById('reviewerid').value = element.reviewerid;
   document.getElementById('employeeid').value = element.employeeid;
+  document.getElementById('feedbackid').value = element._id;
   // Open the modal
   document.getElementById('overlay').style.display = 'block';
 }
