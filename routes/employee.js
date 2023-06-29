@@ -13,7 +13,12 @@ router.put('/submitfeedback', empController.submitEmployeeFeedback);
 
 router.get('/viewreviews/:id', empController.viewPerformanceReviews);
 
-router.get('/reviewrequest', empController.viewReviewRequest);
+router.get('/reviewrequest/:id', empController.viewReviewRequest);
+
+router.put('/addreview', empController.submitEmployeeReview);
+
+
+
 
 
 module.exports=router;
