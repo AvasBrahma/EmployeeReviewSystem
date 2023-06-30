@@ -17,6 +17,8 @@ router.get('/reviewrequest/:id', empController.viewReviewRequest);
 
 router.put('/addreview', empController.submitEmployeeReview);
 
+router.get('/viewemployeereview/:id', empController.viewEmployeeReviews);
+
 
 
 

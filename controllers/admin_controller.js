@@ -120,7 +120,9 @@ module.exports.viewEmployee=async function(req, res){
 
 
 module.exports.createAccount=async function(req, res){
-    return res.render('admin/create-account');
+    return res.render('admin/create-account',{
+        title: "Create Account"
+    });
 }
 
 
@@ -186,7 +188,7 @@ module.exports.addReview=async function(req, res){
                 
                 const newReview= new PerformanceReview(review);
                 await PerformanceReview.create(newReview);
-                res.redirect(`admin/viewemployee/${req.body.employeeId}`);
+                res.redirect(`/admin/viewemployee/${req.body.employeeId}`);
                 
               } catch (error) {
                 console.log('Error:', error);
@@ -226,6 +228,7 @@ module.exports.viewAssignedEmployee=async function(req, res){
 module.exports.assignedReview=async function(req, res){
 
    try{
+
     const assignorId = req.params.id;
     const user= await User.findOne({_id: assignorId});
     const assignorname =user.name
@@ -253,3 +256,48 @@ module.exports.assignedReview=async function(req, res){
    
 }
 
+
+
+
+module.exports.deleteReviews= async(req, res)=>{
+
+    try {
+       await PerformanceReview.deleteOne({
+          _id: req.params.id
+       })
+       res.redirect('/admin/viewallReviews');
+       
+    } catch (error) {
+       console.log('error', error);
+    }
+ 
+ }
+ 
+ 
+ module.exports.deleteUser= async(req, res)=>{
+
+    try {
+       await User.deleteOne({
+          _id: req.params.id
+       })
+
+       const admin= await Admin.findOne({_id: req.params.id});
+       if(admin){
+        await Admin.deleteOne({
+            _id: req.params.id
+         })
+       } else{
+        await Employee.deleteOne({
+            _id: req.params.id
+         })
+         
+       }
+    
+       res.redirect('/admin/viewallemployees');
+       
+    } catch (error) {
+       console.log('error', error);
+    }
+ 
+ }
+ 

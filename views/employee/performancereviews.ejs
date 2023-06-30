@@ -64,7 +64,7 @@
                               </td>
                               <td>
                               <% if (element.feedbackstatus === 'Submitted') { %>
-                                <a href="project_details.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="/employee/viewemployeereview/<%= element._id %>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                                 <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#feedbackModal" onclick="openReviewPopup('<%= JSON.stringify(element) %>')" disabled><i class="fa fa-pencil"></i> Submit Feedback</a>
                             <% } else { %>
                                 <a href="project_details.html" class="btn btn-primary btn-xs" disabled><i class="fa fa-folder"></i> View </a>

@@ -8,30 +8,39 @@ function closeReviewPopup() {
 
 
 const form = document.getElementById('userForm');
-    const searchInput = document.getElementById('searchInput');
-    const tableBody = document.getElementById('tableBody');
+const tableBody = document.getElementById('tableBody');
+const radioInputs = tableBody.querySelectorAll('input[type="radio"]');
 
-    // form.addEventListener('submit', function(event) {
-    //   event.preventDefault();
-    //   const selectedUsers = Array.from(form.elements['user[]'])
-    //     .filter(checkbox => checkbox.checked)
-    //     .map(checkbox => checkbox.value);
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-    //   // Do something with the selected user values
-    //   console.log(selectedUsers);
-    // });
+  const selectedCheckbox = tableBody.querySelector('input[type="checkbox"]:checked');
 
-    searchInput.addEventListener('input', function() {
-      const query = searchInput.value.toLowerCase();
+  if (selectedCheckbox) {
+    const selectedRow = selectedCheckbox.closest('tr');
+    const selectedUser = {
+      id: selectedCheckbox.value,
+      name: selectedRow.querySelector('td:nth-child(2)').innerText,
+      email: selectedRow.querySelector('td:nth-child(3)').innerText,
+      empname: selectedRow.querySelector('input[name="employeename"]').value,
+      employeeid: selectedRow.querySelector('input[name="employeeid"]').value,
+      reviewername: selectedRow.querySelector('input[name="reviewername"]').value
+    };
 
-      Array.from(tableBody.getElementsByTagName('tr')).forEach(row => {
-        const name = row.getElementsByTagName('td')[1].innerText.toLowerCase();
-        const email = row.getElementsByTagName('td')[2].innerText.toLowerCase();
+    // Extract the first element from arrays
+    const empname = selectedUser.empname[0];
+    const employeeid = selectedUser.employeeid[0];
+    const reviewername = selectedUser.reviewername[0];
 
-        if (name.includes(query) || email.includes(query)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
-    });
+    // Do something with the selected user
+    console.log(selectedUser);
+
+    // Set the form values
+    form.elements['selectedUserId'].value = selectedUser.id;
+    form.elements['empname'].value = empname;
+    form.elements['employeeid'].value = employeeid;
+    form.elements['reviewername'].value = reviewername;
+
+    form.submit(); // Submit the form
+  }
+});

@@ -64,3 +64,49 @@
   text-decoration:none;
   }
   
+  .delete-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .delete-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .delete-popup-content h3 {
+    margin-bottom: 20px;
+  }
+  
+  .delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .delete-actions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .cancel-btn {
+    background-color: #ccc;
+  }
+  
+  .confirm-btn {
+    background-color: #ff0000;
+    color: #fff;
+  }
+  

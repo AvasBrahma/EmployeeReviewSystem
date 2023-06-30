@@ -6,7 +6,9 @@ const PerformanceReview=require('../models/performancereviews');
 const { formatCreatedAt } = require('../assets/helper/controllerhelper');
 
 module.exports.empHome=function(req, res){
-    return res.render('employee/emphome');
+    return res.render('employee/emphome',
+   { title: "Home"}
+    );
 }
 
 async function getEmployeeId(user) {
@@ -31,7 +33,9 @@ module.exports.viewPerformanceReviews=async function(req, res){
          let perPage=12;
          let page=req.query.page||1;
          try {
-             const performanceReviews = await PerformanceReview.find({ employeeid: employee.id
+             const performanceReviews = await PerformanceReview.find({ employeeid: employee.id,
+              feedbackstatus: "Pending",
+              feedbackstatus: "Submitted",
             }).sort({ updatedAt: -1 })
                .skip(perPage * page - perPage)
                .limit(perPage)
@@ -127,3 +131,22 @@ module.exports.submitEmployeeReview= async function(req, res){
 }
 
 
+
+
+
+module.exports.viewEmployeeReviews=async function(req, res){
+
+  const performanceReview = await PerformanceReview.findOne({ _id: req.params.id });
+       try {
+           return res.render('employee/viewreviews', {
+             performanceReview,
+              title: "Review"
+           });
+
+
+    } catch (error) {
+      console.log('Error:', error);
+    }
+
+
+}

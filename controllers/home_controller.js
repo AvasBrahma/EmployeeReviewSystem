@@ -4,7 +4,9 @@ const Employee=require('../models/employee');
 
 
 module.exports.createAccount=async function(req, res){
-    return res.render('create-account');
+    return res.render('create-account',{
+        title: "Create Account"
+    });
 }
 
 module.exports.home= async function(req, res){

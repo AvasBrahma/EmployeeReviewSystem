@@ -20,4 +20,9 @@ router.post('/create-review/:id', adminController.addReview);
 
 router.post('/assigned-review/:id', adminController.assignedReview);
 
+router.get('/deletereviews/:id', adminController.deleteReviews);
+
+router.get('/deleteuser/:id', adminController.deleteUser);
+
+
 module.exports=router;

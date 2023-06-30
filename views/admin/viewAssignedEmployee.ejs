@@ -10,7 +10,7 @@
         		<li class=""><a href="#settings-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-gear"></i> Settings</a></li>
         	</ul>
 
-          <h1>Assigned Performance reviewed for employee : <%= excludedEmployee.name %></h1>
+      
           <div class="selectEmpTable">
             <input type="text" id="searchInput" placeholder="Search user">
             <br><br>
@@ -28,7 +28,7 @@
                   <% employee.forEach(element => { %>
                   <tr>
                     <td>
-                      <input type="checkbox" name="reviewerid" value="<%= element.id %>">
+                      <input type="radio" name="reviewerid" value="<%= element.id %>">
                       <input type="hidden" name="employeeid" value="<%= excludedEmployee.id %>">
                       <input type="hidden" name="employeename" value="<%= excludedEmployee.name %>">
                     </td>
