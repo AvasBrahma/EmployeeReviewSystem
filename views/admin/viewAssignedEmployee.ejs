@@ -26,17 +26,17 @@
                 </thead>
                 <tbody id="tableBody">
                   <% employee.forEach(element => { %>
-                  <tr>
-                    <td>
-                      <input type="radio" name="reviewerid" value="<%= element.id %>">
-                      <input type="hidden" name="employeeid" value="<%= excludedEmployee.id %>">
-                      <input type="hidden" name="employeename" value="<%= excludedEmployee.name %>">
-                    </td>
-                    <td><%= element.name %>
-                      <input type="hidden" name="reviewername" value="<%= element.name %>">
-                    </td>
-                    <td><%= element.email %></td>
-                  </tr>
+                    <tr>
+                      <td>
+                        <input type="radio" name="reviewerid" value="<%= element.id %>" id="reviewerid_<%= element.id %>">
+                        <input type="hidden" name="employeeid_<%= element.id %>" value="<%= excludedEmployee.id %>">
+                        <input type="hidden" name="employeename_<%= element.id %>" value="<%= excludedEmployee.name %>">
+                      </td>
+                      <td><%= element.name %>
+                        <input type="hidden" name="reviewername_<%= element.id %>" value="<%= element.name %>">
+                      </td>
+                      <td><%= element.email %></td>
+                    </tr>
                   <% }) %>
                 </tbody>
               </table>

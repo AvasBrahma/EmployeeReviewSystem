@@ -234,16 +234,20 @@ module.exports.assignedReview=async function(req, res){
     const assignorname =user.name
     console.log(' assignorId: ', assignorId);
     console.log(' Reviewer Id : ', req.body);
-    const assignedreview={
-        empname: req.body.employeename,
-        employeeid:req.body.employeeid,
-        reviewerid:req.body.reviewerid,
-        reviewername:req.body.reviewername,
-        assignorid:assignorId,
-        assignorname:assignorname
+   
+// Get the selected reviewer id from the request body
+const selectedReviewerId = req.body.reviewerid;
 
-      }
-        
+const assignedreview = {
+  empname: req.body[`employeename_${selectedReviewerId}`],
+  employeeid: req.body[`employeeid_${selectedReviewerId}`],
+  reviewerid: selectedReviewerId,
+  reviewername: req.body[`reviewername_${selectedReviewerId}`],
+  assignorid: assignorId,
+  assignorname: assignorname
+};
+
+        console.log("Assinged ::::::::::", assignedreview);
         const newReviewAssigned= new PerformanceReview(assignedreview);
         await PerformanceReview.create(newReviewAssigned); 
              res.redirect('/admin/viewallemployees');

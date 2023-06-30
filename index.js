@@ -1,5 +1,6 @@
 // Import required libraries
 const express=require('express');
+require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const passport=require('passport');
 const methodOverride = require('method-override');
