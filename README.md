@@ -14,10 +14,13 @@ This is a web application developed using Express.js, Node.js, MongoDB, JavaScri
     - Manage Employees: Admin can create, view, and delete employee records.
     - Manage Performance Reviews: Admin can add, update, and view performance reviews.
     - Assign Reviewers: Admin can assign employees to participate in another employee's performance review.
+    - 
    ![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/AdminSubmitFeedback.png)
+
 * Employee Functionality:
     - View Performance Reviews: Employees can view a list of performance reviews made by the admin and other employees.
     - Submit Feedback: Employees can submit feedback for performance reviews assigned to them.
+    - 
   ![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/EmpSubmitFeedback.png)
 
 
@@ -30,6 +33,7 @@ This is a web application developed using Express.js, Node.js, MongoDB, JavaScri
 5. Employees can submit feedback for the assigned performance reviews.
    
 ![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/EmployeePerformanceRevewPage.png)
+
 ## Technology Used
 * Express.js
 * Node.js
