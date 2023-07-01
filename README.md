@@ -55,7 +55,7 @@ git clone https://github.com/your-username/employee-review-system.git
 
 ## Screenshots
 
-![screenshot](AdminSubmitFeedback)
+![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/AdminSubmitFeedback.png)
 
 
 ## Hosted Link
