@@ -18,7 +18,7 @@ This is a web application developed using Express.js, Node.js, MongoDB, JavaScri
 * Employee Functionality:
     - View Performance Reviews: Employees can view a list of performance reviews made by the admin and other employees.
     - Submit Feedback: Employees can submit feedback for performance reviews assigned to them.
-
+  ![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/AdminSubmitFeedback.png)
 
 
 ## Usage
@@ -28,6 +28,7 @@ This is a web application developed using Express.js, Node.js, MongoDB, JavaScri
 3. Use the admin functionality to create employees, manage performance reviews, and assign reviewers
 4. Employees can log in with their credentials and view assigned performance reviews.
 5. Employees can submit feedback for the assigned performance reviews.
+![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/AdminSubmitFeedback.png)
 ## Technology Used
 * Express.js
 * Node.js
@@ -53,10 +54,6 @@ git clone https://github.com/your-username/employee-review-system.git
 
 
 
-
-## Screenshots
-
-![screenshot](https://github.com/AvasBrahma/EmployeeReviewSystem/blob/master/screenshot/AdminSubmitFeedback.png)
 
 
 ## Hosted Link
